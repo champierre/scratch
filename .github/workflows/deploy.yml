@@ -30,13 +30,18 @@ jobs:
           path: ./microbit-more-scratch-vm
       - uses: actions/checkout@v2
         with:
+          repository: yokobond/scratch-ext
+          ref: microbit-more
+          path: ./microbit-more-scratch-ext
+      - uses: actions/checkout@v2
+        with:
           repository: champierre/tm2scratch
           path: ./tm2scratch
       - uses: actions/checkout@v2
         with:
-          repository: yokobond/scratch-ext
-          ref: microbit-more
-          path: ./microbit-more-scratch-ext
+          repository: champierre/scratch2maqueen
+          path: ./scratch2maqueen
+      - run: sh ./scratch2maqueen/install_for_github_actions.sh
       - run: sh ./tm2scratch/install_for_github_actions.sh
       - run: sh ./tm2scratch/install_microbit_more_for_github_actions.sh
       - run: sh ./posenet2scratch/install_for_github_actions.sh
