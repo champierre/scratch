@@ -1,0 +1,39 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - "!*"
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: LLK/scratch-gui
+          ref: develop
+      - run: npm install
+      - uses: actions/checkout@v2
+        with:
+          path: ./tm2scratch
+      - uses: actions/checkout@v2
+        with:
+          repository: yokobond/scratch-vm
+          ref: extension/microbit-more
+          path: ./microbit-more-scratch-vm
+      - uses: actions/checkout@v2
+        with:
+          repository: yokobond/scratch-ext
+          ref: microbit-more
+          path: ./microbit-more-scratch-ext
+      - run: sh ./tm2scratch/install_microbit_more_for_github_actions.sh
+      - run: sh ./tm2scratch/install_for_github_actions.sh
+      - run: npm run build
+      - run: cp ./tm2scratch/index.html ./build/index.html
+      - run: cp ./tm2scratch/favicon.ico ./build/static/favicon.ico
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./build
