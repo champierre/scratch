@@ -57,7 +57,6 @@ jobs:
           repository: champierre/speech2scratch
           path: ./speech2scratch
       - run: sh ./speech2scratch/install.sh
-      - run: sh ./scratch/pasorich/install.sh
       - run: sh ./handpose2scratch/install.sh
       - run: sh ./scratch2maqueen/install_for_github_actions.sh
       - run: sh ./tm2scratch/install_for_github_actions.sh
