@@ -45,7 +45,8 @@ jobs:
         with:
           repository: champierre/handpose2scratch
           path: ./handpose2scratch
-      - run: sh ./handpose2scratch/install.sh          
+      - run: sh ./handpose2scratch/install.sh
+      - run: cat ./src/lib/libraries/extensions/index.jsx
       - run: sh ./scratch2maqueen/install_for_github_actions.sh
       - run: sh ./tm2scratch/install_for_github_actions.sh
       - run: sh ./tm2scratch/install_microbit_more_for_github_actions.sh
