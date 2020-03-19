@@ -17,6 +17,9 @@ jobs:
       - run: npm install
       - uses: actions/checkout@v2
         with:
+          path: ./scratch
+      - uses: actions/checkout@v2
+        with:
           repository: champierre/ml2scratch
           path: ./ml2scratch
       - uses: actions/checkout@v2
@@ -45,6 +48,7 @@ jobs:
         with:
           repository: champierre/handpose2scratch
           path: ./handpose2scratch
+      - run: sh ./scratch/pasorich/install.sh          
       - run: sh ./handpose2scratch/install.sh
       - run: cat ./src/lib/libraries/extensions/index.jsx
       - run: sh ./scratch2maqueen/install_for_github_actions.sh
