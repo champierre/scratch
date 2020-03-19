@@ -56,6 +56,11 @@ jobs:
         with:
           repository: champierre/speech2scratch
           path: ./speech2scratch
+      - uses: actions/checkout@v2
+        with:
+          repository: champierre/ic2scratch
+          path: ./ic2scratch
+      - run: sh ./ic2scratch/install.sh          
       - run: sh ./speech2scratch/install.sh
       - run: sh ./scratch/pasorich/install.sh
       - run: sh ./handpose2scratch/install.sh
